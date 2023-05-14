@@ -14,7 +14,7 @@ function ToastPlayground() {
 
   const handlePopToastClick = () => {
     if (variant) {
-      setShowToast(!showToast);
+      setShowToast(true);
     }
   }
 
@@ -29,7 +29,10 @@ function ToastPlayground() {
         <h1>Toast Playground</h1>
       </header>
 
-      {showToast && <Toast message={message} variant={variant} handleDismiss={handleDismiss} />}
+      {showToast && 
+      <Toast variant={variant} handleDismiss={handleDismiss}>
+        {message}
+      </Toast>}
 
       <div className={styles.controlsWrapper}>
         <div className={styles.row}>
