@@ -18,6 +18,10 @@ function ToastPlayground() {
     }
   }
 
+  const handleDismiss = () => {
+    setShowToast(false);
+  }
+
   return (
     <div className={styles.wrapper}>
       <header>
@@ -25,7 +29,7 @@ function ToastPlayground() {
         <h1>Toast Playground</h1>
       </header>
 
-      {showToast ? <Toast message={message} variant={variant} /> : null}
+      {showToast && <Toast message={message} variant={variant} handleDismiss={handleDismiss} />}
 
       <div className={styles.controlsWrapper}>
         <div className={styles.row}>
