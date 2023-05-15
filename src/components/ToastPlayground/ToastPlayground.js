@@ -30,6 +30,12 @@ function ToastPlayground() {
     setVariant(VARIANT_OPTIONS[0]);
   };
 
+  const handleDismiss = (id) => {
+    const nextToasts = toasts.filter(toast => toast.id !== id);
+
+    setToasts(nextToasts);
+  }
+
   return (
     <div className={styles.wrapper}>
       <header>
@@ -37,7 +43,7 @@ function ToastPlayground() {
         <h1>Toast Playground</h1>
       </header>
 
-      <ToastShelf toasts={toasts} />
+      <ToastShelf toasts={toasts} handleDismiss={handleDismiss} />
 
       <form className={styles.controlsWrapper} onSubmit={handlePopToastClick}>
         <div className={styles.row}>
