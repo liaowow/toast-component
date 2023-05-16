@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 
+import { ToastContext } from "../ToastProvider";
 import Button from "../Button";
 import ToastShelf from "../ToastShelf";
 
@@ -8,32 +9,21 @@ import styles from "./ToastPlayground.module.css";
 const VARIANT_OPTIONS = ["notice", "warning", "success", "error"];
 
 function ToastPlayground() {
+  const { toasts, createToast } = React.useContext(ToastContext); 
   const [message, setMessage] = useState("");
   const [variant, setVariant] = useState("");
-  const [toasts, setToasts] = useState([]);
 
   const handlePopToastClick = (event) => {
     event.preventDefault();
-
-    const nextToast = [
-      ...toasts,
-      {
-        id: crypto.randomUUID(),
-        message,
-        variant,
-      },
-    ];
-
-    setToasts(nextToast);
-
+    createToast(message, variant);
     setMessage("");
     setVariant(VARIANT_OPTIONS[0]);
   };
 
   const handleDismiss = (id) => {
-    const nextToasts = toasts.filter(toast => toast.id !== id);
+    // const nextToasts = toasts.filter(toast => toast.id !== id);
 
-    setToasts(nextToasts);
+    // setToasts(nextToasts);
   }
 
   return (
