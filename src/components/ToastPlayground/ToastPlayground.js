@@ -9,7 +9,7 @@ import styles from "./ToastPlayground.module.css";
 const VARIANT_OPTIONS = ["notice", "warning", "success", "error"];
 
 function ToastPlayground() {
-  const { toasts, createToast } = React.useContext(ToastContext); 
+  const { createToast } = React.useContext(ToastContext); 
   const [message, setMessage] = useState("");
   const [variant, setVariant] = useState("");
 
@@ -20,12 +20,6 @@ function ToastPlayground() {
     setVariant(VARIANT_OPTIONS[0]);
   };
 
-  const handleDismiss = (id) => {
-    // const nextToasts = toasts.filter(toast => toast.id !== id);
-
-    // setToasts(nextToasts);
-  }
-
   return (
     <div className={styles.wrapper}>
       <header>
@@ -33,7 +27,7 @@ function ToastPlayground() {
         <h1>Toast Playground</h1>
       </header>
 
-      <ToastShelf toasts={toasts} handleDismiss={handleDismiss} />
+      <ToastShelf />
 
       <form className={styles.controlsWrapper} onSubmit={handlePopToastClick}>
         <div className={styles.row}>

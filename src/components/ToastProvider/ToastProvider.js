@@ -18,8 +18,13 @@ function ToastProvider({ children }) {
     setToasts(nextToast);
   }
 
+  const handleDismiss = (id) => {
+    const nextToasts = toasts.filter(toast => toast.id !== id);
+    setToasts(nextToasts);
+  }
+
   return (
-    <ToastContext.Provider value={{ toasts, createToast }}>
+    <ToastContext.Provider value={{ toasts, createToast, handleDismiss }}>
       {children}
     </ToastContext.Provider>
   );
