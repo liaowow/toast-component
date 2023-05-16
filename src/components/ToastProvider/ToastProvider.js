@@ -24,9 +24,11 @@ function ToastProvider({ children }) {
     setToasts(nextToasts);
   }
 
-  useEscapeKey(() => {
+  const handleEscape = React.useCallback(() => {
     setToasts([]);
-  });
+  }, [])
+
+  useEscapeKey(handleEscape);
 
   return (
     <ToastContext.Provider value={{ toasts, createToast, handleDismiss }}>
